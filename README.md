@@ -1,7 +1,7 @@
 
 # Estimating Care Plan Contributions to Daily Care Demand
 
-**Author:** Chamberlain Mbah
+**Author:** Your Name  
 **Date:** \today
 
 ## Problem Description
@@ -29,9 +29,9 @@ The data consists of:
 
 ## Deriving Care Demand
 
-Given the assumption that care supply equals care demand on any given day, we directly use the total care supply values as our measure of care demand. This means that the daily care demand for each department is derived from the recorded total care supply in minutes. Thus, the care demand \( D_i \) for day \( i \) is given by:
+Given the assumption that care supply equals care demand on any given day, we directly use the total care supply values as our measure of care demand. This means that the daily care demand for each department is derived from the recorded total care supply in minutes. Thus, the care demand \(D_i\) for day \(i\) is given by:
 
-\[ D_i = \text{total\_dpt\_supply\_in\_minutes} \]
+![Equation](https://latex.codecogs.com/png.latex?D_i%20=%20\text{total\_dpt\_supply\_in\_minutes})
 
 This straightforward approach allows us to leverage the available supply data to estimate care demand without additional transformations or assumptions.
 
@@ -43,29 +43,29 @@ The problem is translated into a regression framework where the daily care deman
 
 Let:
 
-- \( n \) be the number of days.
-- \( m \) be the number of different care plans.
-- \( O_{i,j} \) be the number of occurrences of care plan \( j \) on day \( i \).
-- \( D_i \) be the total care demand (or supply) for day \( i \).
-- \( d_j \) be the contribution of care plan \( j \) to the daily care demand.
+- \(n\) be the number of days.
+- \(m\) be the number of different care plans.
+- \(O_{i,j}\) be the number of occurrences of care plan \(j\) on day \(i\).
+- \(D_i\) be the total care demand (or supply) for day \(i\).
+- \(d_j\) be the contribution of care plan \(j\) to the daily care demand.
 
 The relationship between the total daily care demand and the occurrences of care plans can be expressed as:
 
-\[ D_i = \sum_{j=1}^{m} O_{i,j} \cdot d_j \]
+![Equation](https://latex.codecogs.com/png.latex?D_i%20=%20\sum_{j=1}^{m}%20O_{i,j}%20\cdot%20d_j)
 
 In matrix form:
 
-\[ \mathbf{D} = \mathbf{O} \cdot \mathbf{d} \]
+![Equation](https://latex.codecogs.com/png.latex?\mathbf{D}%20=%20\mathbf{O}%20\cdot%20\mathbf{d})
 
 where:
 
-- \( \mathbf{D} \) is an \( n \times 1 \) vector of daily care demand values.
-- \( \mathbf{O} \) is an \( n \times m \) matrix of care plan occurrences.
-- \( \mathbf{d} \) is an \( m \times 1 \) vector of unknown care plan contributions.
+- \(\mathbf{D}\) is an \(n \times 1\) vector of daily care demand values.
+- \(\mathbf{O}\) is an \(n \times m\) matrix of care plan occurrences.
+- \(\mathbf{d}\) is an \(m \times 1\) vector of unknown care plan contributions.
 
-To solve for \( \mathbf{d} \), we use linear regression, where the coefficients \( \mathbf{d} \) are estimated by minimizing the sum of squared residuals:
+To solve for \(\mathbf{d}\), we use linear regression, where the coefficients \(\mathbf{d}\) are estimated by minimizing the sum of squared residuals:
 
-\[ \mathbf{d} = (\mathbf{O}^T \mathbf{O})^{-1} \mathbf{O}^T \mathbf{D} \]
+![Equation](https://latex.codecogs.com/png.latex?\mathbf{d}%20=%20(\mathbf{O}^T%20\mathbf{O})^{-1}%20\mathbf{O}^T%20\mathbf{D})
 
 ### Implementation
 
@@ -89,5 +89,4 @@ Here are some thoughtful next steps to enhance the analysis and ensure its robus
 ## Conclusion
 
 This methodology allows us to estimate the contribution of each care plan to the total daily care demand. The estimated contributions can then be used to predict future care demand based on the occurrences of care plans. By refining the model and incorporating domain expertise, we can provide valuable insights to improve hospital resource management.
-
 
