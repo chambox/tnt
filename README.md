@@ -1,8 +1,8 @@
 
 # Estimating Care Plan Contributions to Daily Care Demand
 
-**Author:** Your Name  
-**Date:** \today
+**Author:** Chamberlain
+**Date:** 
 
 ## Problem Description
 
